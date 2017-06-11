@@ -16,8 +16,7 @@ import cucumber.api.junit.Cucumber;
 @RunWith(Cucumber.class)
 @CucumberOptions(features = "src/test/resources/featurefile", tags = { "@JenkinsTest" }, plugin = {
 		"pretty", "html:target/cucumber-html-report",
-		"json:target/cucumber.json", "junit:target/cucumber.xml",
-		"usage:target/cucumber-usage.json" ,"rerun:target/rerun.txt" }, glue = { "com.ingcapgemini" } )
+		"json:target/cucumber.json", "junit:target/cucumber.xml" ,"rerun:target/rerun.txt" }, glue = { "com.ingcapgemini" } )
 //FOR
 /*@CucumberOptions(features = {"@target/rerun.txt"}, plugin = {
 		"pretty", "html:target/cucumber-html-report",
