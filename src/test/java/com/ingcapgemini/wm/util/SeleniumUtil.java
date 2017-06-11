@@ -81,7 +81,20 @@ public class SeleniumUtil {
 	}
 
 	
-	
+	public static void cleanFolder(int day,String folder){
+		LOGGER.info("delete log from logs folder before day :"+day);
+		File file=new File(System.getProperty("user.dir")+"//"+folder+"//");
+		for (File file1:file.listFiles()){
+			long diff = new Date().getTime()-file1.lastModified();
+			if (diff>day*24*60*60*1000){
+				file1.delete();
+			}
+			
+			LOGGER.debug("Logs deleted before days :"+day);
+		}
+		
+		
+	}
 	public static void ValidateWebElementPresence(WebDriver driver, By by) {
 		LOGGER.info("Inside ValidateWebElementPresence method"); 
 		WebDriverWait explicitWait = new WebDriverWait(driver, WEBLEMENT_SYNC);

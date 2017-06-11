@@ -11,12 +11,13 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 
 public class WebConnector {
-	private static final Logger LOGGER=LogManager.getLogger(SeleniumUtil.class);
+	public static boolean driverStatus=false;
+	private static final Logger LOGGER=LogManager.getLogger(WebConnector.class);
 	private static WebConnector web;
 	private WebDriver driver=null;
-	//private WebDriver fireFox=null;
-	//private WebDriver IE=null;
-	//private WebDriver chrome=null;
+	private WebDriver fireFox=null;
+	private WebDriver IE=null;
+	private WebDriver chrome=null;
 	private static Properties configProperties;//value initialized will remain same for the entire execution until u use setter(creating object of class and accessing variable)
 	private static Properties sqlProperties;
 	private static final String  configFile=System.getProperty("user.dir")+"//src//test//resources//config//Config.properties";
@@ -50,11 +51,13 @@ public class WebConnector {
 
 	public WebDriver getDriver(){//one instance of webconnector implies as one instance of driver....
 		if (driver==null){
-			//if("firefox".equalsIgnoreCase(System.getProperty("Browser")) && fireFox==null){
+			driverStatus=true;
+		//	if("firefox".equalsIgnoreCase(System.getProperty("Browser")) && fireFox==null){
 				if("firefox".equalsIgnoreCase(System.getProperty("Browser"))){
 				LOGGER.info("Inside Firefox browser initialization");
 				System.setProperty("webdriver.gecko.driver", System.getProperty("user.dir")+"\\src\\test\\resources\\geckodriver.exe");
 		    driver= new FirefoxDriver();
+		    fireFox=driver;
 		    LOGGER.debug("FireFox Browser launched successfully");
 		}
 		//else if("IE".equalsIgnoreCase(System.getProperty("Browser")) && IE==null){
@@ -63,12 +66,14 @@ public class WebConnector {
 				System.out.println("i am inside IE");
 				 System.setProperty("webdriver.ie.driver", System.getProperty("user.dir")+"\\src\\test\\resources\\IEDriverServer_32.exe");
 				driver= new InternetExplorerDriver();
+				IE=driver;
 				LOGGER.debug("IE Browser launched successfully");
 			}
 		//else if("Chrome".equalsIgnoreCase(System.getProperty("Browser")) && chrome==null){
 			else if("Chrome".equalsIgnoreCase(System.getProperty("Browser"))){
 			System.setProperty("webdriver.chrome.driver",System.getProperty("user.dir")+"\\src\\test\\resources\\chromedriver.exe");
 					driver= new ChromeDriver();	
+					chrome=driver;
 				}
 			
 	}
@@ -81,16 +86,16 @@ public class WebConnector {
 
 	/*public void setFireFox(WebDriver fireFox) {
 		this.fireFox = fireFox;
-	}*/
+	}
 
-/*	public void setIE(WebDriver iE) {
+	public void setIE(WebDriver iE) {
 		IE = iE;
 	}
 
 	public void setChrome(WebDriver chrome) {
 		this.chrome = chrome;
-	}
-*/
+	}*/
+
 
 	public static Properties getConfigProperties() {
 		return configProperties;

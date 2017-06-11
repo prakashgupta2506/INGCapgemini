@@ -1,0 +1,12 @@
+2017-06-11 12:03:49 INFO  SeleniumUtil:85 - delete log from logs folder before day :1
+2017-06-11 12:03:49 DEBUG SeleniumUtil:93 - Logs deleted before days :1
+2017-06-11 12:03:49 DEBUG SeleniumUtil:93 - Logs deleted before days :1
+2017-06-11 12:03:50 INFO  GlobalStepDefinition:16 - Inside ApplyLeavePO
+2017-06-11 12:03:50 INFO  GlobalStepDefinition:23 - Inside ApplyLeavePO
+2017-06-11 12:03:50 INFO  GlobalStepDefinition:30 - Inside ApplyLeavePO
+2017-06-11 12:03:50 INFO  GlobalStepDefinition:16 - Inside ApplyLeavePO
+2017-06-11 12:03:50 INFO  GlobalStepDefinition:23 - Inside ApplyLeavePO
+2017-06-11 12:03:50 INFO  GlobalStepDefinition:30 - Inside ApplyLeavePO
+2017-06-11 12:03:50 INFO  GlobalStepDefinition:16 - Inside ApplyLeavePO
+2017-06-11 12:03:50 INFO  GlobalStepDefinition:23 - Inside ApplyLeavePO
+2017-06-11 12:03:50 INFO  GlobalStepDefinition:30 - Inside ApplyLeavePO

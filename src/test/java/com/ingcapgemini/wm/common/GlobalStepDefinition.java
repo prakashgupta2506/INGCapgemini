@@ -21,6 +21,7 @@ import cucumber.api.java.en.Given;
 public class GlobalStepDefinition {
 	 private WebConnector webConnector= WebConnector.getInstance(); //getting object of WebConnector since this is singleton class
 	 private static final Logger LOGGER=LogManager.getLogger(GlobalStepDefinition.class);
+	
 	 @Before(order = 0)
 	public void Setup(Scenario scenario) {
 		System.out.println("before setup");
@@ -48,16 +49,20 @@ public class GlobalStepDefinition {
 	@After(order = 0)
 	public void TearDown(Scenario scenario) {
 		System.out.println("Tear down");
+		
 		if (scenario.isFailed()) {
+			System.out.println("i am inside screen shot after fail");
 			final byte[] screenshot = ((TakesScreenshot) webConnector.getDriver())
 					.getScreenshotAs(OutputType.BYTES);
 			scenario.embed(screenshot, "image/png"); // stick it in the report
 		}
 		
 		
-		SeleniumUtil.closeBrowser(webConnector.getDriver());
+		
 		//set driver object to null
-		if (webConnector.getDriver()!=null){
+		if (WebConnector.driverStatus==true){
+			System.out.println("i am inside kill browser");
+		SeleniumUtil.closeBrowser(webConnector.getDriver());
 		//SeleniumUtil.quitBrowser(driver.getDriver());
 		webConnector.setDriver(null);
 		}
